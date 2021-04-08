@@ -112,6 +112,7 @@ extension DiaryViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let note = notes[indexPath.row]
         let viewController = AddEditViewController(note: note)
         viewController.delegate = self
