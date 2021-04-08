@@ -7,8 +7,8 @@ protocol SavingNotes: AnyObject {
 final class DiaryViewController: UIViewController {
 
     private var notes = [
-        DiaryNote(title: "Dia 1", message: "Today I did lots of things"),
-        DiaryNote(title: "Dia 2", message: "Today I didn't do that much"),
+        DiaryNote(title: "Dia 1", message: "Today I did many things"),
+        DiaryNote(title: "Dia 2", message: "Today I didn't do much"),
         DiaryNote(title: "Dia 3", message: "Today I rested")
     ]
 
