@@ -2,7 +2,7 @@
 A project that I created to be a basis for futures studies
 
 # What is this project about?
-This project is about diary notes. It was created to be a basis for future studies. We can redesign, add support to Dark Mode, saving data, add some type of architecture, like MVVM or VIPER, and so on. There's a lot to work with.
+This project is about diary notes. It was created to be a basis for future studies. We can redesign, add support to Dark Mode, saving data, add some type of architecture, like MVVM or VIPER, and so on. There's a lot to work with!
 
 # What this app can do?
 The main screen shows a list with pre-created notes. There's an option to enable edit mode by tapping the right navigation bar button, and to create a new note by tapping the add button at the left in navigation bar. It's possible to edit a single note content by tapping on it.
