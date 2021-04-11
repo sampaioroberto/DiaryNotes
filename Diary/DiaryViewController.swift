@@ -4,6 +4,10 @@ protocol SavingNotes: AnyObject {
     func save(note: DiaryNote)
 }
 
+enum DiarySection: Hashable {
+    case main
+}
+
 final class DiaryViewController: UIViewController {
 
     private var notes = [
@@ -19,12 +23,31 @@ final class DiaryViewController: UIViewController {
         return view
     }()
 
+    private lazy var tableViewDataSource: EditEnabledDiffableDataSource = {
+        let dataSource = EditEnabledDiffableDataSource(tableView: tableView) { [weak self] tableView, _, id in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DiaryTableViewCell.self)) as? DiaryTableViewCell else {
+                return UITableViewCell()
+            }
+
+            if let note = self?.notes.first(where: { $0.id == id }) {
+                cell.title = note.title
+                cell.message = note.message
+            }
+
+            return cell
+        }
+        dataSource.deleteClosure = { id in
+            self.notes.removeAll(where: { $0.id == id})
+        }
+        return dataSource
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(DiaryTableViewCell.self, forCellReuseIdentifier: String(describing: DiaryTableViewCell.self))
+        tableView.delegate = self
+        configureInitialDiffableSnapshot()
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -59,54 +82,30 @@ private extension DiaryViewController {
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
+
+    func configureInitialDiffableSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<DiarySection, UUID>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(notes.map(\.id))
+        tableViewDataSource.apply(snapshot, animatingDifferences: false)
+    }
 }
 
 extension DiaryViewController: SavingNotes {
     func save(note: DiaryNote) {
-        if let index = notes.firstIndex(where: { $0.id == note.id }) {
+        var snapshot = tableViewDataSource.snapshot()
+        if let index = notes.firstIndex(of: note) {
             notes[index] = note
-            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            snapshot.reloadItems([note.id])
         } else {
             notes.append(note)
-            tableView.insertRows(at: [IndexPath(row: notes.count-1, section: 0)], with: .automatic)
+            snapshot.appendItems([note.id])
         }
-    }
-}
-
-extension DiaryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DiaryTableViewCell.self)) as? DiaryTableViewCell else {
-            return UITableViewCell()
-        }
-        let note = notes[indexPath.row]
-        cell.title = note.title
-        cell.message = note.message
-        return cell
+        tableViewDataSource.apply(snapshot)
     }
 }
 
 extension DiaryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            notes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let diaryNote = notes.remove(at: sourceIndexPath.row)
-        notes.insert(diaryNote, at: destinationIndexPath.row)
-        tableView.reloadData()
-    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let note = notes[indexPath.row]

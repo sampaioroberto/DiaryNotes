@@ -10,6 +10,7 @@
 		AC11D137261BBD7900F89956 /* DiaryNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D136261BBD7900F89956 /* DiaryNote.swift */; };
 		AC11D145261BC8A200F89956 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D144261BC8A200F89956 /* AddEditViewController.swift */; };
 		ACB3FD2E261DC0B40054BD7F /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3FD2D261DC0B40054BD7F /* DiaryTableViewCell.swift */; };
+		ACB66AC726209E9B006B042E /* EditEnabledDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB66AC626209E9B006B042E /* EditEnabledDiffableDataSource.swift */; };
 		ACE569C0261511F800B5EB7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE569BF261511F800B5EB7F /* AppDelegate.swift */; };
 		ACE569C2261511F800B5EB7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE569C1261511F800B5EB7F /* SceneDelegate.swift */; };
 		ACE569C4261511F800B5EB7F /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE569C3261511F800B5EB7F /* DiaryViewController.swift */; };
@@ -42,6 +43,7 @@
 		AC11D136261BBD7900F89956 /* DiaryNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNote.swift; sourceTree = "<group>"; };
 		AC11D144261BC8A200F89956 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		ACB3FD2D261DC0B40054BD7F /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
+		ACB66AC626209E9B006B042E /* EditEnabledDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEnabledDiffableDataSource.swift; sourceTree = "<group>"; };
 		ACE569BC261511F800B5EB7F /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE569BF261511F800B5EB7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE569C1261511F800B5EB7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				ACE569BF261511F800B5EB7F /* AppDelegate.swift */,
 				ACE569C1261511F800B5EB7F /* SceneDelegate.swift */,
 				ACE569C3261511F800B5EB7F /* DiaryViewController.swift */,
+				ACB66AC626209E9B006B042E /* EditEnabledDiffableDataSource.swift */,
 				ACB3FD2D261DC0B40054BD7F /* DiaryTableViewCell.swift */,
 				AC11D144261BC8A200F89956 /* AddEditViewController.swift */,
 				AC11D136261BBD7900F89956 /* DiaryNote.swift */,
@@ -288,6 +291,7 @@
 				ACE569C4261511F800B5EB7F /* DiaryViewController.swift in Sources */,
 				AC11D145261BC8A200F89956 /* AddEditViewController.swift in Sources */,
 				ACE569C0261511F800B5EB7F /* AppDelegate.swift in Sources */,
+				ACB66AC726209E9B006B042E /* EditEnabledDiffableDataSource.swift in Sources */,
 				ACE56A05261515DF00B5EB7F /* UIView+Constraints.swift in Sources */,
 				ACE569C2261511F800B5EB7F /* SceneDelegate.swift in Sources */,
 				ACE569FD261514A400B5EB7F /* ViewCode.swift in Sources */,
