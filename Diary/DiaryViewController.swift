@@ -24,6 +24,9 @@ final class DiaryViewController: UIViewController {
     private var leftTableViewAnchor: NSLayoutConstraint?
     private var rightTableViewAnchor: NSLayoutConstraint?
 
+    private var selectedZoomedView: UIView?
+    private var selectedCellSnapshotFrame: CGRect?
+
     private lazy var optionsSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: NotesOption.allCases.map(\.rawValue))
         segmentedControl.addTarget(self, action: #selector(changedSegmentedControl), for: .valueChanged)
@@ -185,6 +188,33 @@ extension DiaryViewController: UITableViewDelegate {
         let note = notes[indexPath.row]
         let viewController = AddEditViewController(note: note)
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        viewController.transitioningDelegate = self
+        if let selectedCell = tableView.cellForRow(at: indexPath) {
+            selectedZoomedView = selectedCell.snapshotView(afterScreenUpdates: true)
+            selectedCellSnapshotFrame = selectedCell.superview?.convert(selectedCell.frame, to: nil)
+        }
+
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
+    }
+}
+
+extension DiaryViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let frame = selectedCellSnapshotFrame,
+              let view = selectedZoomedView else {
+            return nil
+        }
+        let zoomAnimator = ZoomAnimator(frame: frame, view: view, isZoomingIn: true)
+        return zoomAnimator
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let frame = selectedCellSnapshotFrame,
+            let view = selectedZoomedView else {
+            return nil
+        }
+        let zoomAnimator = ZoomAnimator(frame: frame, view: view, isZoomingIn: false)
+        return zoomAnimator
     }
 }
