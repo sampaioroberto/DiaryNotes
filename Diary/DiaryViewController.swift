@@ -113,7 +113,8 @@ private extension DiaryViewController {
     func addDiaryNote() {
         let viewController = AddEditViewController()
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 
     @objc
@@ -184,7 +185,6 @@ extension DiaryViewController: SavingNotes {
 
 extension DiaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let note = notes[indexPath.row]
         let viewController = AddEditViewController(note: note)
         viewController.delegate = self
