@@ -38,6 +38,13 @@ final class AddEditViewController: UIViewController {
         return textView
     }()
 
+    private let saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.addTarget(self, action: #selector(saveNote), for: .touchUpInside)
+        return button
+    }()
+
     init(note: DiaryNote? = nil) {
         self.note = note
         super.init(nibName: nil, bundle: nil)
@@ -61,6 +68,7 @@ extension AddEditViewController: ViewCode {
         contentStackView.addArrangedSubview(titleTextField)
         contentStackView.addArrangedSubview(messageLabel)
         contentStackView.addArrangedSubview(messageTextView)
+        contentStackView.addArrangedSubview(saveButton)
     }
 
     func buildConstraints() {
@@ -76,7 +84,6 @@ extension AddEditViewController: ViewCode {
 
     func configureView() {
         view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveNote))
         titleTextField.text = note?.title
         messageTextView.text = note?.message
     }
@@ -101,6 +108,6 @@ private extension AddEditViewController {
             delegate?.save(note: savingNote)
         }
         
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
 }

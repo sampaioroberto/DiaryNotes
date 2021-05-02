@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC11D137261BBD7900F89956 /* DiaryNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D136261BBD7900F89956 /* DiaryNote.swift */; };
 		AC11D145261BC8A200F89956 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D144261BC8A200F89956 /* AddEditViewController.swift */; };
+		ACAA0E2F2635FCB200385A13 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA0E2E2635FCB200385A13 /* ZoomAnimator.swift */; };
 		ACB3FD2E261DC0B40054BD7F /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB3FD2D261DC0B40054BD7F /* DiaryTableViewCell.swift */; };
 		ACB66AC726209E9B006B042E /* EditEnabledDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB66AC626209E9B006B042E /* EditEnabledDiffableDataSource.swift */; };
 		ACE569C0261511F800B5EB7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE569BF261511F800B5EB7F /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		AC11D136261BBD7900F89956 /* DiaryNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNote.swift; sourceTree = "<group>"; };
 		AC11D144261BC8A200F89956 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
+		ACAA0E2E2635FCB200385A13 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 		ACB3FD2D261DC0B40054BD7F /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		ACB66AC626209E9B006B042E /* EditEnabledDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEnabledDiffableDataSource.swift; sourceTree = "<group>"; };
 		ACE569BC261511F800B5EB7F /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		ACAA0E2D2635FC9E00385A13 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ACAA0E2E2635FCB200385A13 /* ZoomAnimator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		ACE569B3261511F800B5EB7F = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		ACE569BE261511F800B5EB7F /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				ACAA0E2D2635FC9E00385A13 /* Utils */,
 				AC11D134261BBD2900F89956 /* Protocols */,
 				ACE569FB2615147B00B5EB7F /* Extensions */,
 				ACE569BF261511F800B5EB7F /* AppDelegate.swift */,
@@ -297,6 +308,7 @@
 				ACE569FD261514A400B5EB7F /* ViewCode.swift in Sources */,
 				AC11D137261BBD7900F89956 /* DiaryNote.swift in Sources */,
 				ACB3FD2E261DC0B40054BD7F /* DiaryTableViewCell.swift in Sources */,
+				ACAA0E2F2635FCB200385A13 /* ZoomAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

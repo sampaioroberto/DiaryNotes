@@ -50,21 +50,4 @@ extension UIView {
         }
         NSLayoutConstraint.activate(constraints)
     }
-
-//    func centerXToSuperview() {
-//        translatesAutoresizingMaskIntoConstraints = false
-//        guard let superview = superview else { return }
-//        centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
-//    }
-//
-//    func centerYToSuperview() {
-//        translatesAutoresizingMaskIntoConstraints = false
-//        guard let superview = superview else { return }
-//        centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
-//    }
-//
-//    func centerToSuperview() {
-//        centerXToSuperview()
-//        centerYToSuperview()
-//    }
 }
